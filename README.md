@@ -33,3 +33,11 @@ The project uses the following technologies: <br/>
 
 # Eclipse
 - see the [Eclipse wiki page](https://github.com/eugenp/REST-With-Spring/wiki/Eclipse:-Setup-and-Configuration) of this project
+
+# Error
+I met the following error:
+Caused by: java.lang.NoSuchMethodError: org.apache.tomcat.util.res.StringManager.getManager(Ljava/lang/Class;)Lorg/apache/tomcat/util/res/StringManager;
+
+The reason is that tomcat 8.0.26 depended by cargo-maven2-plugin'version 1.4.16 set in top pom.xml conflicts with tomcat 8.5.6 depended by org.springframework.boot 1.4.2,
+we need modify
+   <cargo-maven2-plugin.version>1.4.16</cargo-maven2-plugin.version> into <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
